@@ -7,12 +7,12 @@ import numpy
 numpy_inc = numpy.get_include()
 
 extensions = [
-	Extension("hidden_markov.markov_chain",
-			["hidden_markov/markov_chain.pyx"],
+	Extension("cytohmm.markov_chain",
+			["cytohmm/markov_chain.pyx"],
 		include_dirs = [numpy_inc],
 		),
-	Extension("hidden_markov.likelihood",
-			["hidden_markov/likelihood.pyx"],
+	Extension("cytohmm.likelihood",
+			["cytohmm/likelihood.pyx"],
 		include_dirs = [numpy_inc],
 		),
 	]
