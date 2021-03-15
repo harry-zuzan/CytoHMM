@@ -1,5 +1,6 @@
-from distutils.core import setup
-from distutils.extension import Extension
+#from distutils.core import setup
+from setuptools import setup, Extension
+#from distutils.extension import Extension
 from Cython.Build import cythonize
 
 import numpy
@@ -8,20 +9,34 @@ numpy_inc = numpy.get_include()
 
 extensions = [
 	Extension("cytohmm.markov_chain",
-			["cytohmm/markov_chain.pyx"],
+			["src/markov_chain.pyx"],
 		include_dirs = [numpy_inc],
 		),
 	Extension("cytohmm.likelihood",
-			["cytohmm/likelihood.pyx"],
+			["src/likelihood.pyx"],
 		include_dirs = [numpy_inc],
+		),
+	Extension("cytohmm.sequence_segmenter",
+			["src/sequence_segmenter.py"],
 		),
 	]
 
 
 setup(
-	name = "Markov chain and likelihood",
+	name = "cytohmm",
+	version='0.0.1',
 	ext_modules = cythonize(extensions),
-	packages=['cytohmm',],
+	description='Cytogenetics hidden Markov model',
+	url='https://github.com/harry-zuzan/CytoHMM',
+	author='Harry Zuzan',
+	author_email='harry.zuzan@gmail.com',
+	license='MIT',
+#	packages=['src',],
+#	package_dir={'','src'},
 	zip_safe=False,
 )
+
+
+# for a template that uses Cython this is incrementally modelled after
+# https://github.com/FedericoStra/cython-package-example/blob/master/setup.py
 
