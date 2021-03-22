@@ -21,16 +21,22 @@ extensions = [
 		),
 	]
 
+with open('README.md','r') as mdfile:
+	long_desc = mdfile.read()
+
 
 setup(
 	name = "cytohmm",
-	version='0.0.1',
+	version='0.0.2',
 	ext_modules = cythonize(extensions),
 	description='Cytogenetics hidden Markov model',
+	long_description=long_desc,
+	long_description_content_type='text/markdown',
 	url='https://github.com/harry-zuzan/CytoHMM',
 	author='Harry Zuzan',
 	author_email='harry.zuzan@gmail.com',
 	license='MIT',
+	setup_requires=['numpy','cython'],
 #	packages=['src',],
 #	package_dir={'','src'},
 	zip_safe=False,
