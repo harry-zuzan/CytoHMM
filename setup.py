@@ -9,16 +9,16 @@ numpy_inc = numpy.get_include()
 
 extensions = [
 	Extension("cytohmm.markov_chain",
-			["src/markov_chain.pyx"],
+			["src/cytohmm/markov_chain.pyx"],
 		include_dirs = [numpy_inc],
 		),
 	Extension("cytohmm.likelihood",
-			["src/likelihood.pyx"],
+			["src/cytohmm/likelihood.pyx"],
 		include_dirs = [numpy_inc],
 		),
-	Extension("cytohmm.sequence_segmenter",
-			["src/sequence_segmenter.py"],
-		),
+#	Extension("cytohmm.sequence_segmenter",
+#			["src/sequence_segmenter.py"],
+#		),
 	]
 
 with open('README.md','r') as mdfile:
@@ -28,6 +28,7 @@ with open('README.md','r') as mdfile:
 setup(
 	name = "cytohmm",
 	version='0.0.2',
+	package_dir={'cytohmm': 'src/cytohmm'},
 	ext_modules = cythonize(extensions),
 	description='Cytogenetics hidden Markov model',
 	long_description=long_desc,
@@ -37,7 +38,7 @@ setup(
 	author_email='harry.zuzan@gmail.com',
 	license='MIT',
 	setup_requires=['numpy','cython'],
-#	packages=['src',],
+	packages=['cytohmm',],
 #	package_dir={'','src'},
 	zip_safe=False,
 )
