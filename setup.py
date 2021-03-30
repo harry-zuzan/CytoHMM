@@ -27,7 +27,7 @@ with open('README.md','r') as mdfile:
 
 setup(
 	name = "cytohmm",
-	version='0.0.2',
+	version='0.0.3',
 	package_dir={'cytohmm': 'src/cytohmm'},
 	ext_modules = cythonize(extensions),
 	description='Cytogenetics hidden Markov model',
