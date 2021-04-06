@@ -12,7 +12,7 @@ Python 3
 Using the source code from github.  First install numpy and cython
 ```
 git clone https://github.com/harry-zuzan/cytohmm.git
-cd trprimes
+cd cytohmm
 python setup.py install
 
 ```
@@ -21,7 +21,7 @@ Using pip
 ```
 pip install numpy
 pip install cython
-pip install trprimes
+pip install cytohmm
 
 ```
 
