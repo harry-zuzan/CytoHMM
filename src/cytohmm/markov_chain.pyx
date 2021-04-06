@@ -2,12 +2,8 @@ import numpy
 cimport numpy
 
 from libc.math cimport exp, sqrt
-#from libc.math cimport M_PI
 
 from likelihood import  gaussian_likelihood
-from likelihood import  logistic_likelihood
-from likelihood import  mixed_gaussian_likelihood
-from likelihood import  mixed_logistic_likelihood
 
 # These are the models with a Markov chain prior.  All priors are
 # homogeneous and reversible.  Transitions probabilities are implemented
@@ -18,7 +14,6 @@ from likelihood import  mixed_logistic_likelihood
 # to produce likelihods with heavier tails.
 
 # There are two solutions. The Viterbi and marginal aka forward backward.
-
 
 # The form of the prior and likelihood do not depend on each other.  In that
 # sense they are always conjugate.  The approach is to compute the likelihood
@@ -38,63 +33,9 @@ def hmm_viterbi_gaussian(yvec, mu, sigma, diag):
 
 	return soln
 
-def hmm_viterbi_logistic(yvec, mu, sigma, diag):
-	lhood = logistic_likelihood(yvec, mu, sigma)
-
-	soln = numpy.zeros((yvec.size,), numpy.int32)
-	soln = hmm_viterbi_c(lhood, diag)
-
-	return soln
-
-def hmm_viterbi_mixed_gaussian(yvec, mu, sigma, cval, diag):
-	lhood = mixed_gaussian_likelihood(yvec, mu, sigma, cval)
-
-	soln = numpy.zeros((yvec.size,), numpy.int32)
-	soln = hmm_viterbi_c(lhood, diag)
-
-	return soln
-
-def hmm_viterbi_mixed_logistic(yvec, mu, sigma, cval, diag):
-	lhood = mixed_logistic_likelihood(yvec, mu, sigma, cval)
-
-	soln = numpy.zeros((yvec.size,), numpy.int32)
-	soln = hmm_viterbi_c(lhood, diag)
-
-	return soln
-
 
 def hmm_marginal_gaussian(yvec, mu, sigma, diag):
 	lhood = gaussian_likelihood(yvec, mu, sigma)
-
-	marginals = numpy.zeros((mu.size,yvec.size), numpy.float64)
-	marginals = hmm_marginal_c(lhood, diag)
-	soln = marginals.argmax(0)
-
-	return marginals, soln
-
-
-def hmm_marginal_logistic(yvec, mu, sigma, diag):
-	lhood = logistic_likelihood(yvec, mu, sigma)
-
-	marginals = numpy.zeros((mu.size,yvec.size), numpy.float64)
-	marginals = hmm_marginal_c(lhood, diag)
-	soln = marginals.argmax(0)
-
-	return marginals, soln
-
-
-def hmm_marginal_mixed_gaussian(yvec, mu, sigma, cval, diag):
-	lhood = mixed_gaussian_likelihood(yvec, mu, sigma, cval)
-
-	marginals = numpy.zeros((mu.size,yvec.size), numpy.float64)
-	marginals = hmm_marginal_c(lhood, diag)
-	soln = marginals.argmax(0)
-
-	return marginals, soln
-
-
-def hmm_marginal_mixed_logistic(yvec, mu, sigma, cval, diag):
-	lhood = mixed_logistic_likelihood(yvec, mu, sigma, cval)
 
 	marginals = numpy.zeros((mu.size,yvec.size), numpy.float64)
 	marginals = hmm_marginal_c(lhood, diag)

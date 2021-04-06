@@ -1,6 +1,3 @@
-from collections import namedtuple
-
-#Segment = namedtuple('Segment',['start','stop','value'])
 
 class Segment:
 	def __init__(self,start,stop,value):
@@ -11,6 +8,7 @@ class Segment:
 	def size(self):
 		return self.stop - self.start
 
+
 # A doubly linked list of segments
 class DLSeg:
 	def __init__(self,seg):
@@ -18,7 +16,6 @@ class DLSeg:
 		self.dl_prev = None
 		self.dl_next = None
 		self.reducible = True
-		
 
 
 def min_seg_size(seg_list,min_sz):
