@@ -10,7 +10,7 @@ Python 3
 ## Installing
 
 Using the source code from github.  First install numpy and cython
-
+```
 git clone https://github.com/harry-zuzan/cytohmm.git
 cd trprimes
 python setup.py install
