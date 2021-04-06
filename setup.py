@@ -1,6 +1,4 @@
-#from distutils.core import setup
 from setuptools import setup, Extension
-#from distutils.extension import Extension
 from Cython.Build import cythonize
 
 import numpy
@@ -21,29 +19,11 @@ extensions = [
 #		),
 	]
 
-with open('README.md','r') as mdfile:
-	long_desc = mdfile.read()
-
-
 setup(
-	name = "cytohmm",
-	version='0.0.3',
 	package_dir={'cytohmm': 'src/cytohmm'},
 	ext_modules = cythonize(extensions),
-	description='Cytogenetics hidden Markov model',
-	long_description=long_desc,
-	long_description_content_type='text/markdown',
-	url='https://github.com/harry-zuzan/CytoHMM',
-	author='Harry Zuzan',
-	author_email='harry.zuzan@gmail.com',
-	license='MIT',
 	setup_requires=['numpy','cython'],
 	packages=['cytohmm',],
-#	package_dir={'','src'},
 	zip_safe=False,
 )
-
-
-# for a template that uses Cython this is incrementally modelled after
-# https://github.com/FedericoStra/cython-package-example/blob/master/setup.py
 

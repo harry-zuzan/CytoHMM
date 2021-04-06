@@ -1,19 +1,27 @@
 # CytoHMM
 
-Hidden Markov models for cytogenetic microarrays.  Will be copying
-code from the repository Markov-models over here.  Then later it will
-be moved.
+A hidden Markov model for cytogenetic microarrays.
 
-At this point primarily Affymetrix arrays are addressed.  There is no
-reason why Illumina microarrays couldn't use this code.
+## Getting started
+
+Python 3
 
 
-## Installation
+## Installing
 
-Currently numpy and cython need to be preinstalled in the environment. The 
-the 0.0.x version number is due to working out the installation and 
-documentation.
+Using the source code from github.  First install numpy and cython
 
-## Usage
+git clone https://github.com/harry-zuzan/cytohmm.git
+cd trprimes
+python setup.py install
 
-documentation to do
+```
+
+Using pip
+```
+pip install numpy
+pip install cython
+pip install trprimes
+
+```
+
