@@ -1,6 +1,8 @@
 # CytoHMM
 
-A hidden Markov model for cytogenetic microarrays.
+A hidden Markov model for cytogenetic microarrays.  This main branch is
+in place to conform with pypi.  The dev branch is being ovehauled to look
+more like a proper piece of code
 
 ## Getting started
 
